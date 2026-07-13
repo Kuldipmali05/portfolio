@@ -37,8 +37,9 @@ const Hero = () => {
           </h1>
 
           <p className="hero-description w-full text-center text-xl leading-8 text-zinc-400">
-            Full-stack developer crafting AI-native web products with clarity,
-            performance, and beautiful user experiences.
+            Full-stack developer passionate about building modern, interactive,
+            and AI-powered web experiences <br /> with clean code, thoughtful design,
+            and exceptional user experiences.
           </p>
 
           <div className="hero-buttons mt-2 flex gap-4 font-(--body) text-sm">
