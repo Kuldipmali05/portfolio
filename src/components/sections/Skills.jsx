@@ -6,8 +6,14 @@ import { useRef } from "react";
 import { skillAnimation } from "@/animations/skillAnimation";
 
 export default function Skills() {
+  const sectionRef = useRef(null);
+  const tagRef = useRef(null);
+  const headingRef = useRef(null);
+  const descriptionRef = useRef(null);
+
   const leftTween = useRef(null);
   const rightTween = useRef(null);
+
   const leftRowRef = useRef(null);
   const rightRowRef = useRef(null);
 
@@ -41,12 +47,16 @@ export default function Skills() {
 
   useGSAP(() => {
     skillAnimation(
+      sectionRef.current,
+      tagRef.current,
+      headingRef.current,
+      descriptionRef.current,
       leftRowRef.current,
       rightRowRef.current,
       leftTween,
       rightTween,
     );
-  });
+  }, []);
 
   const pauseLeft = () => leftTween.current.pause();
   const resumeLeft = () => leftTween.current.resume();
@@ -57,18 +67,25 @@ export default function Skills() {
   return (
     <section
       id="skills"
+      ref={sectionRef}
       className="relative overflow-hidden bg-background py-15 sm:py-24 md:py-28 lg:py-32"
     >
       <div className="mx-auto mb-12 max-w-7xl px-5 sm:px-6 md:px-8 lg:mb-20 text-center">
-        <p className="text-(--primary) text-[10px] sm:text-xs uppercase tracking-[0.25rem] sm:tracking-[0.35rem]">
+        <p
+          ref={tagRef}
+          className="text-(--primary) text-[10px] sm:text-xs uppercase tracking-[0.25rem] sm:tracking-[0.35rem]"
+        >
           MY STACK
         </p>
 
-        <h2 className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading">
+        <h2
+          ref={headingRef}
+          className="mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold font-heading"
+        >
           Technologies I Work With
         </h2>
 
-        <p className="mx-auto mt-4 sm:mt-6 max-w-xl sm:max-w-2xl md:max-w-3xl text-base sm:text-lg leading-7 sm:leading-8 text-gray-400">
+        <p  ref={descriptionRef} className="mx-auto mt-4 sm:mt-6 max-w-xl sm:max-w-2xl md:max-w-3xl text-base sm:text-lg leading-7 sm:leading-8 text-gray-400">
           I build scalable web applications using modern frontend, backend,
           database, and AI technologies.
         </p>

@@ -2,8 +2,29 @@ import React from "react";
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 import Link from "next/link";
 import Image from "next/image";
+import { useRef } from "react";
+import { useGSAP } from "@/libs/gsap";
+import { projectAnimation } from "@/animations/projectAnimation";
 
 const Projects = () => {
+  const sectionRef = useRef(null);
+  const tagRef = useRef(null);
+  const headingRef = useRef(null);
+  const descriptionRef = useRef(null);
+
+  const cardsRef = useRef([]);
+  cardsRef.current = [];
+
+  useGSAP(() => {
+    projectAnimation(
+      sectionRef.current,
+      tagRef.current,
+      headingRef.current,
+      descriptionRef.current,
+      cardsRef.current,
+    );
+  }, []);
+
   const projects = [
     {
       id: 1,
@@ -28,8 +49,8 @@ const Projects = () => {
         "Optimized image delivery using ImageKit CDN",
         "RESTful backend architecture",
       ],
-      github: "https://github.com/yourusername/snitch",
-      live: "https://snitch.vercel.app",
+      github: "https://github.com/Kuldipmali05/SNITCH",
+      live: "",
     },
 
     {
@@ -54,8 +75,8 @@ const Projects = () => {
         "Real-time AI response visualization",
         "Modular backend supporting multiple AI providers",
       ],
-      github: "https://github.com/yourusername/ai-arena",
-      live: "https://aiarena.vercel.app",
+      github: "https://github.com/Kuldipmali05/AI-ARENA",
+      live: "",
     },
 
     {
@@ -73,8 +94,8 @@ const Projects = () => {
         "Redis JWT blacklist authentication",
         "Responsive full-stack architecture",
       ],
-      github: "https://github.com/yourusername/moodify",
-      live: "https://moodify.vercel.app",
+      github: "https://github.com/Kuldipmali05/MOODIFY",
+      live: "",
     },
     {
       id: 4,
@@ -106,22 +127,35 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="relative overflow-hidden py-24 lg:py-32">
+    <section
+      ref={sectionRef}
+      id="projects"
+      className="relative overflow-hidden py-24 lg:py-32"
+    >
       {/* Background Glow */}
       <div className="absolute left-1/2 top-40 h-[35rem] w-[35rem] -translate-x-1/2 rounded-full bg-(--primary) opacity-10 blur-[180px]" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 sm:px-8 lg:px-12">
         {/* Heading */}
         <div className="mb-20 text-center">
-          <p className="text-xs uppercase tracking-[0.4em] text-(--primary)">
+          <p
+            ref={tagRef}
+            className="text-xs uppercase tracking-[0.4em] text-(--primary) font-body"
+          >
             FEATURED WORK
           </p>
 
-          <h2 className="mt-5 text-[clamp(2.8rem,6vw,5rem)] font-semibold leading-none">
+          <h2
+            ref={headingRef}
+            className="mt-5 text-[clamp(2.8rem,6vw,5rem)] font-semibold leading-none font-heading"
+          >
             Featured Projects
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-zinc-400">
+          <p
+            ref={descriptionRef}
+            className="mx-auto mt-6 max-w-2xl text-zinc-400"
+          >
             A collection of projects showcasing my expertise in full-stack
             development, AI integration, and creating scalable web applications.
           </p>
@@ -152,15 +186,12 @@ const Projects = () => {
                 <p className="text-sm uppercase tracking-[0.3em] text-(--primary) font-body">
                   {project.subtitle}
                 </p>
-
                 <h3 className="mt-4 text-4xl font-semibold font-heading">
                   {project.title}
                 </h3>
-
                 <p className="mt-6 leading-8 text-zinc-400">
                   {project.description}
                 </p>
-
                 {/* Tech */}
                 <div className="mt-8 flex flex-wrap gap-3">
                   {project.tech.map((tech) => (
@@ -175,14 +206,17 @@ const Projects = () => {
 
                 {/* Buttons */}
                 <div className="mt-10 flex flex-wrap gap-4">
-                  <Link
-                    href={project.live}
-                    target="_blank"
-                    className="flex items-center gap-2 rounded-full bg-(--primary) px-6 py-3 font-medium text-black transition hover:scale-105"
-                  >
-                    Live Demo
-                    <FiArrowUpRight />
-                  </Link>
+                  {project.live && (
+                    <Link
+                      href={project.live}
+                      target="_blank"
+                      className="flex items-center gap-2 rounded-full bg-(--primary)
+                px-6 py-3 font-medium text-black transition hover:scale-105"
+                    >
+                      Live Demo
+                      <FiArrowUpRight />
+                    </Link>
+                  )}
 
                   <Link
                     href={project.github}
