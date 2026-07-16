@@ -9,6 +9,7 @@ import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 
 import Loader from "@/components/layout/Loader";
+import Marquee from "@/components/sections/Marquee";
 
 const Page = () => {
   const [loading, setLoading] = useState(true);

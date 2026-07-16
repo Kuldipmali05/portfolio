@@ -28,7 +28,7 @@ const Hero = () => {
             KULDIP MALI • FULL-STACK DEVELOPER
           </p>
 
-          <h1 className="hero-title hero-text w-full text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none">
+          <h1 className="hero-title hero-text w-full text-center text-5xl sm:text-6xl md:text-7xl lg:text-8xl sm:leading-none md:leading-none lg:leading-18">
             Turning ideas into scalable applications & user{" "}
             <span className="text-(--primary) underline decoration-1 underline-offset-8 sm:underline-offset-15">
               <i>experiences</i>
@@ -36,9 +36,9 @@ const Hero = () => {
           </h1>
 
           <p className="hero-description w-full max-w-4xl text-center text-base sm:text-lg lg:text-xl leading-7 sm:leading-8 text-zinc-400">
-            Full-stack developer passionate about building modern,
-            interactive, and AI-powered web experiences with clean code,
-            thoughtful design, and exceptional user experiences.
+            Full-stack developer passionate about building modern, interactive,
+            and AI-powered web experiences with clean code, thoughtful design,
+            and exceptional user experiences.
           </p>
 
           <div className="hero-buttons mt-2 flex w-full flex-col sm:w-auto sm:flex-row gap-4 font-(--body) text-sm">

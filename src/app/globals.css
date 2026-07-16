@@ -17,6 +17,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  --font-heading: var(--font-heading);
+  --font-body: var(--font-body);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -61,5 +64,9 @@ body {
 }
 
 nav {
+  font-family: var(--font-body);
+}
+
+.about-t {
   font-family: var(--font-body);
 }
